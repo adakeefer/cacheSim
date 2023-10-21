@@ -3,14 +3,14 @@
 #include <string.h>
 #include <math.h>
 
-#define NUMMEMORY 65536 /* maximum number of words in memory */
-#define NUMREGS 8 /* number of machine registers */
+#define MEMSIZE 65536
+#define REGISTERS 8
 #define MAXLINELENGTH 1000
 
 typedef struct stateStruct {
     int pc;
-    int mem[NUMMEMORY];
-    int reg[NUMREGS];
+    int mem[MEMSIZE];
+    int reg[REGISTERS];
     int numMemory;
 } stateType;
 
@@ -113,11 +113,11 @@ int temp1, temp2;
         }
     }
 
-    for (temp = state.numMemory; temp < NUMMEMORY; ++temp)
+    for (temp = state.numMemory; temp < MEMSIZE; ++temp)
         state.mem[temp] = 0;
 
     //init registers
-    for (destReg = 0; destReg < NUMREGS; ++destReg)
+    for (destReg = 0; destReg < REGISTERS; ++destReg)
         state.reg[destReg] = 0;
 
     foundHalt = 0;
